@@ -1,3 +1,4 @@
+import logging
 import warnings
 from src.data.load_dataset import load_and_preprocess_data, preprocess_data
 from src.visualization.visualize import plot_histograms, univariate_analysis, bivariate_analysis, plot_correlation
@@ -6,6 +7,15 @@ from src.model.train_model import split_data, train_logistic_regression, train_s
 from src.model.predict_model import evaluate_model
 import openpyxl
 
+# Configure logging to write to both file and console
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('app.log'),
+        logging.StreamHandler()
+    ]
+)
 
 if __name__ == "__main__":
     # Load and preprocess the data
